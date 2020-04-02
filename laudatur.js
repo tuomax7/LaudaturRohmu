@@ -5,18 +5,15 @@ window.onload = function(){
 	var speedOfGrades = 5;
 	var score = 0;
 	var end = false;
+	var pFail = 0.8; //probability of spawned grade being some kind of improbatur 0<=pFail<=1
 
 	document.body.style.backgroundColor = "#e0f4fe";
 
-
 	var cap = document.getElementById("cap");
 
-  	cap.style.position = 'absolute';
-  	cap.style.zIndex = 1000;
 
-  	document.body.append(cap);
 
- 	 moveAt(event.pageX, event.pageY);
+ 	//moveAt(event.pageX, event.pageY);
 
   	function moveAt(pageX, pageY) {
   		cap.style.left = pageX - cap.offsetWidth / 2 + 'px';
@@ -35,30 +32,30 @@ window.onload = function(){
   		return false;
 	};
 
+
+
 	var grades = [];
 	var gradeNames = ["I=", "I-", "I", "I+", "A", "B", "C", "M", "E", "L"];
-	//var gradeColors = ["orange", "black", "maroon", "purple", "pink", "green", "yellow", "white", "red", "blue"];
 	var gradeCounts = [0, 0, 0, 0, 0, 0];
 
 	setInterval(function() {
+
+		//jos pisteet epänegatiiviset, peli jatkuu
 		if(score >= 0){
 			var grade = document.createElement("h1");
 			var defineGrade;
-			if(Math.random() > 0.2){
+
+			if(Math.random() < pFail){
 				//joku hylätyistä
 				defineGrade = Math.floor(Math.random() * 3);
 			}else{
 				//joku muu
-				defineGrade = Math.floor(Math.random() * (10-4))+4;
+				defineGrade = Math.floor(Math.random() * 6)+4;
 			}
 
 			grade.innerText = gradeNames[defineGrade];
-			//grade.style.color = gradeColors[defineGrade];
-			grade.style.color = "black";
-			grade.style.fontSize = "75px";
-			grade.style.position = "absolute";
 			grade.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
-			grade.style.top = "-150px";
+
 
 			grades.push(grade);
 			document.body.appendChild(grade);
