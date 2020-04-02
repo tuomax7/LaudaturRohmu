@@ -1,10 +1,9 @@
-
 window.onload = function(){
 
 	//DECLARING VARIABLES AND SETTING UP THE ENVIRONMENT
 
 	var rateOfGrades = 400; //one spawned grade every rateOfGrades milliseconds
-	var score = 0; // aka 'kompensaatiopisteet'
+	var score = 0; //aka 'kompensaatiopisteet'
 	var end = false; //to check whether the player has already lost
 	var pFail = 0.8; //probability of spawned grade being some kind of improbatur 0<=pFail<=1
 
@@ -207,7 +206,7 @@ window.onload = function(){
 					}
 				}
 
-				document.getElementById("rivi").innerText = "Todistuksesi: " + gradeLine;
+				document.getElementById("gradeLine").innerText = "Todistuksesi: " + gradeLine;
 
 			}
 
